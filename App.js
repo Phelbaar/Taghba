@@ -1,10 +1,90 @@
+import React from 'react';
+import {
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
+
+export default class Taghba extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      dataSource: null,
+    };
+  }
+
+  componentDidMount() {
+    //type GET request
+    return fetch('https://api.punkapi.com/v2/beers') // https://swapi.co/api/planets/
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson,
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    if (this.state.isLoading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator />
+        </View>
+      );
+    } else {
+      let beer = this.state.dataSource.map((val, key) => {
+        return (
+          <View key={key} style={styles.item}>
+            <Text style={styles.text}>{val.name}</Text>
+          </View>
+        );
+      });
+
+      return (
+        <View style={styles.container}>
+          <ScrollView>{beer}</ScrollView>
+        </View>
+      ); /*<ScrollView>
+      {name}
+    </ScrollView>*/
+    }
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    color: '#FFC31E',
+  },
+  item: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 50,
+    margin: 2,
+    borderWidth: 1,
+    backgroundColor: '#000',
+  },
+});
+
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
  * @format
  * @flow
- */
 
 import React from 'react';
 import {
@@ -111,4 +191,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default App;*/
