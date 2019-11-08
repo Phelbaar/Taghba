@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   ScrollView,
@@ -6,8 +7,9 @@ import {
   ActivityIndicator,
   StyleSheet,
   Image,
+  TouchableHighlight,
 } from 'react-native';
-import {NavigationEvents, createStackNavigator} from 'react-navigation';
+import {NavigationEvents} from 'react-navigation';
 
 export default class Taghba extends React.Component {
   static navigationOption = {
@@ -21,6 +23,7 @@ export default class Taghba extends React.Component {
       dataSource: null,
     };
   }
+
 
   componentDidMount() {
     //type GET request
@@ -38,24 +41,24 @@ export default class Taghba extends React.Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     if (this.state.isLoading) {
       return (
         <View style={styles.container}>
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" color="#00ff00" />
         </View>
       );
     } else {
       let drinks = this.state.dataSource.map((val, key) => {
         return (
-          <View key={key} style={styles.item}>
-            <Text
-              style={styles.text}
-              // onPress={() => NavigationEvents('Description', {name: name})}
-            >
-              {val.strDrink}
-            </Text>
-            <Text>       </Text>
-            <Image style={styles.image} source={{uri: val.strDrinkThumb}} />
+          <View style={styles.item} key={key}>
+            <Text style={styles.text}>{val.strDrink}</Text>
+            <TouchableHighlight
+              onPress={() =>
+                navigate('Details')
+              }>
+              <Image style={styles.image} source={{uri: val.strDrinkThumb}} />
+            </TouchableHighlight>
           </View>
         );
       });
@@ -68,14 +71,15 @@ export default class Taghba extends React.Component {
     }
   }
 }
-/**
- * <Text
-              style={styles.text}
-              onPress={() => NavigationEvents('Description', {name: name})}
-              >
-              {val.name}
-            </Text>
-            <Text>       </Text>
+
+ /*        <View key={key} style={styles.item}>
+            <Text style={styles.text}>{val.strDrink}</Text>
+            <Image
+              style={styles.image}
+              source={{uri: val.strDrinkThumb}}
+              //onPress={() => NavigationEvents('Description', {name: name})}
+            />
+          </View>
  */
 
 const styles = StyleSheet.create({
@@ -87,9 +91,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: '#000',
+    fontFamily: 'lucida grande',
   },
   item: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 50,
@@ -98,9 +103,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#91bbc8',
   },
   image: {
-    width: 100,
-    height: 100,
+    marginTop: 20,
+    width: 200,
+    height: 200,
     //resizeMode: 'contain',
     //borderTopLeftRadius: 1000,
   },
 });
+
