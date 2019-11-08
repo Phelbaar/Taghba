@@ -5,8 +5,9 @@ import {
   View,
   ActivityIndicator,
   StyleSheet,
+  Image,
 } from 'react-native';
-import {NavigationEvents} from 'react-navigation';
+import {NavigationEvents, createStackNavigator} from 'react-navigation';
 
 export default class Taghba extends React.Component {
   static navigationOption = {
@@ -40,18 +41,14 @@ export default class Taghba extends React.Component {
     if (this.state.isLoading) {
       return (
         <View style={styles.container}>
-          <ActivityIndicator />
+          <ActivityIndicator size="large" />
         </View>
       );
     } else {
       let beer = this.state.dataSource.map((val, key) => {
         return (
           <View key={key} style={styles.item}>
-            <Text
-              style={styles.text}
-              onPress={() => NavigationEvents('DescriptionScreen')}>
-              {val.name}
-            </Text>
+            <Image style={styles.image} source={{uri: val.image_url}} />
           </View>
         );
       });
@@ -64,6 +61,15 @@ export default class Taghba extends React.Component {
     }
   }
 }
+/**
+ * <Text
+              style={styles.text}
+              onPress={() => NavigationEvents('Description', {name: name})}
+              >
+              {val.name}
+            </Text>
+            <Text>       </Text>
+ */
 
 const styles = StyleSheet.create({
   container: {
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color: '#FFC31E',
+    color: '#000',
   },
   item: {
     flexDirection: 'row',
@@ -82,6 +88,12 @@ const styles = StyleSheet.create({
     padding: 50,
     margin: 2,
     borderWidth: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#91bbc8',
+  },
+  image: {
+    width: 50,
+    height: 100,
+    resizeMode: 'contain',
+    borderTopLeftRadius: 1000,
   },
 });
