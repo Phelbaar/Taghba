@@ -12,7 +12,7 @@ import {
 import Taghba from './Taghba';
 
 export default class DetailScreen extends React.Component {
-  /*static navigationOption = {
+  static navigationOption = {
     title: 'Welcome home buddy',
   };
 
@@ -38,10 +38,10 @@ export default class DetailScreen extends React.Component {
       .catch(error => {
         console.log(error);
       });
-  }*/
+  }
 
   render() {
-    /*if (this.state.isLoading) {
+    if (this.state.isLoading) {
       return (
         <View style={styles.container}>
           <ActivityIndicator size="large" color="#00ff00" />
@@ -51,18 +51,18 @@ export default class DetailScreen extends React.Component {
       let drinks = this.state.dataSource.map((val, key) => {
         return (
           <View style={styles.item}>
-            <Text style={styles.text}>blaba</Text>
+            <Text style={styles.text}>{val.strDrink}</Text>
           </View>
         );
-      });*/
+      });
 
       return (
         <View style={styles.container}>
-          <Text>Good !</Text>
+          <Text>{drinks}</Text>
         </View>
       );
     }
-  //}
+  }
 }
 
 const styles = StyleSheet.create({

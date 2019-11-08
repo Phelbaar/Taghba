@@ -7,7 +7,12 @@ import DetailScreen from './Description';
 
 const MainNavigator = createStackNavigator(
   {
-    Home: {screen: Taghba},
+    Home: {
+      screen: Taghba,
+      navigationOptions:{
+          title: 'Home'
+        }
+      },
     Details: {screen: DetailScreen},
   },
   {initialRouteName: 'Home'},
