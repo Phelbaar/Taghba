@@ -24,12 +24,12 @@ export default class Taghba extends React.Component {
 
   componentDidMount() {
     //type GET request
-    return fetch('https://api.punkapi.com/v2/beers') // https://swapi.co/api/planets/
+    return fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php') // https://swapi.co/api/planets/
       .then(response => response.json())
       .then(responseJson => {
         this.setState({
           isLoading: false,
-          dataSource: responseJson,
+          dataSource: responseJson.drinks,
         });
       })
       .catch(error => {
@@ -45,17 +45,24 @@ export default class Taghba extends React.Component {
         </View>
       );
     } else {
-      let beer = this.state.dataSource.map((val, key) => {
+      let drinks = this.state.dataSource.map((val, key) => {
         return (
           <View key={key} style={styles.item}>
-            <Image style={styles.image} source={{uri: val.image_url}} />
+            <Text
+              style={styles.text}
+              // onPress={() => NavigationEvents('Description', {name: name})}
+            >
+              {val.strDrink}
+            </Text>
+            <Text>       </Text>
+            <Image style={styles.image} source={{uri: val.strDrinkThumb}} />
           </View>
         );
       });
 
       return (
         <View style={styles.container}>
-          <ScrollView>{beer}</ScrollView>
+          <ScrollView>{drinks}</ScrollView>
         </View>
       );
     }
@@ -91,9 +98,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#91bbc8',
   },
   image: {
-    width: 50,
+    width: 100,
     height: 100,
-    resizeMode: 'contain',
-    borderTopLeftRadius: 1000,
+    //resizeMode: 'contain',
+    //borderTopLeftRadius: 1000,
   },
 });
