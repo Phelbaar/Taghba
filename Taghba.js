@@ -1,19 +1,12 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
-  ScrollView,
   Text,
-  View,
-  ActivityIndicator,
   StyleSheet,
-  Image,
   ImageBackground,
   TouchableHighlight,
-  Button,
   Alert,
   BackHandler,
 } from 'react-native';
-import { NavigationEvents } from 'react-navigation';
 
 import bgImage from './background.jpg';
 
@@ -28,22 +21,6 @@ export default class Taghba extends React.Component {
       isLoading: true,
       dataSource: null,
     };
-  }
-
-
-  componentDidMount() {
-    //type GET request
-    return fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php') // https://swapi.co/api/planets/
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson.drinks,
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
   render() {

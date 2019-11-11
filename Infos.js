@@ -27,14 +27,11 @@ export default class Infos extends React.Component {
 
             <ImageBackground source={bgImage} style={{ width: '100%', height: '100%', alignItems: 'center' }}>
                 <Text style={styles.title}>Information</Text>
-                <Text style={styles.cont}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Ut mattis nulla a tellus ultrices, eget vulputate tellus consequat. 
-                Fusce gravida sapien vel urna pharetra, a dapibus quam pellentesque.
-                Morbi finibus porttitor pulvinar. 
-                Integer commodo sollicitudin lectus, pellentesque eleifend nulla fringilla a. 
-                Aliquam quis nisl nec magna ultricies congue at ut ante.
-                Etiam dolor magna, fermentum non dictum eu, rhoncus quis ante. 
-                Sed scelerisque eget magna vitae molestie.</Text>
+                <Text style={styles.cont}>Hi, and welcome on 'Get my Random Cocktail'.
+                Our application is using an API from thecocktaildb.com. It's an open, crowd-sourced database 
+                of drinks and cocktails from around the world. You can now get your own random cocktail, just by pushing a button. 
+                You will be able to read a short recipe of your cocktail. So... Enjoy !
+                </Text>
             </ImageBackground >
 
 
@@ -45,32 +42,11 @@ export default class Infos extends React.Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#000',
-        justifyContent: 'center',
-    },
-    item: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 50,
-        margin: 2,
-        borderWidth: 1,
-        backgroundColor: '#91bbc8',
-    },
-    cont:{
+      cont:{
         width: 200,
-        fontSize: 14,
+        fontSize: 16,
         textAlign: 'justify',
         top: 20,
-    },
-    image: {
-        marginTop: 20,
-        width: 200,
-        height: 200,
-        //resizeMode: 'contain',
-        //borderTopLeftRadius: 1000,
     },
     title: {
         height: 'auto',
@@ -83,11 +59,6 @@ const styles = StyleSheet.create({
         textShadowRadius: 6,
         fontWeight: 'bold',
         textShadowColor: '#EA4E2F',
-    },
-    content: {
-        color: '#fff',
-        fontFamily: 'arial',
-        fontSize: 30,
     },
 
 });
