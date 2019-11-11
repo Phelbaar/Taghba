@@ -7,13 +7,19 @@ import {
   ActivityIndicator,
   StyleSheet,
   Image,
+  ImageBackground,
   TouchableHighlight,
+  Button,
+  Alert,
+  BackHandler,
 } from 'react-native';
-import {NavigationEvents} from 'react-navigation';
+import { NavigationEvents } from 'react-navigation';
+
+import bgImage from './background.jpg';
 
 export default class Taghba extends React.Component {
   static navigationOption = {
-    title: 'Welcome home buddy',
+    title: '',
   };
 
   constructor(props) {
@@ -41,73 +47,104 @@ export default class Taghba extends React.Component {
   }
 
   render() {
-    const {navigate} = this.props.navigation;
-    if (this.state.isLoading) {
-      return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" color="#00ff00" />
-        </View>
-      );
-    } else {
-      let drinks = this.state.dataSource.map((val, key) => {
-        return (
-          <View style={styles.item} key={key}>
-            <Text style={styles.text}>{val.strDrink}</Text>
-            <TouchableHighlight
-              onPress={() =>
-                navigate('Details')
-              }>
-              <Image style={styles.image} source={{uri: val.strDrinkThumb}} />
-            </TouchableHighlight>
-          </View>
-        );
-      });
+    const { navigate } = this.props.navigation;
 
-      return (
-        <View style={styles.container}>
-          <ScrollView>{drinks}</ScrollView>
-        </View>
-      );
-    }
+    return (
+      <ImageBackground source={bgImage} style={{ width: '100%', height: '100%', alignItems: 'center' }}>
+        <Text style={styles.title}>Welcome to Get My Random Cocktail !</Text>
+        <Text style={styles.content}></Text>
+
+        <TouchableHighlight style={styles.button_help}
+          onPress={() =>
+            Alert.alert('Click on "Random Cocktail" to get your Random Cocktail ~ !')}>
+          <Text style={styles.button_cont}>Help</Text>
+        </TouchableHighlight>
+
+
+        <TouchableHighlight style={styles.button_get}
+          onPress={() =>
+            navigate('Details')}>
+          <Text style={styles.button_cont}>Random Cocktail</Text>
+        </TouchableHighlight >
+
+
+        <TouchableHighlight style={styles.button_info}
+          onPress={() =>
+            navigate('Infos')}>
+          <Text style={styles.button_cont}>Infos</Text>
+        </TouchableHighlight >
+
+
+        <TouchableHighlight style={styles.button_exit}
+          onPress={() =>
+            BackHandler.exitApp()}>
+          <Text style={styles.button_cont}>Exit</Text>
+        </TouchableHighlight >
+      </ImageBackground >
+
+
+    );
   }
 }
 
- /*        <View key={key} style={styles.item}>
-            <Text style={styles.text}>{val.strDrink}</Text>
-            <Image
-              style={styles.image}
-              source={{uri: val.strDrinkThumb}}
-              //onPress={() => NavigationEvents('Description', {name: name})}
-            />
-          </View>
- */
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
+  title: {
+    height: 'auto',
+    color: '#FBCF3F',
+    fontFamily: 'arial',
+    fontSize: 30,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    marginTop: 100,
+    textShadowRadius: 6,
+    fontWeight: 'bold',
+    textShadowColor: '#EA4E2F',
   },
-  text: {
-    fontSize: 20,
-    color: '#000',
-    fontFamily: 'lucida grande',
+  content: {
+    color: '#fff',
+    fontFamily: 'arial',
+    fontSize: 30,
   },
-  item: {
-    flexDirection: 'column',
-    justifyContent: 'center',
+  button_help: {
+    width: 220,
+    backgroundColor: '#ED4F3D',
+    height: 'auto',
+    borderRadius: 50,
     alignItems: 'center',
-    padding: 50,
-    margin: 2,
-    borderWidth: 1,
-    backgroundColor: '#91bbc8',
+    padding: 10,
   },
-  image: {
-    marginTop: 20,
-    width: 200,
-    height: 200,
-    //resizeMode: 'contain',
-    //borderTopLeftRadius: 1000,
+  button_get: {
+    width: 220,
+    backgroundColor: '#F9C323',
+    height: 'auto',
+    borderRadius: 50,
+    alignItems: 'center',
+    padding: 10,
+    top: 20,
   },
+  button_info: {
+    width: 220,
+    backgroundColor: '#A0AD87',
+    height: 'auto',
+    borderRadius: 50,
+    alignItems: 'center',
+    padding: 10,
+    top: 40,
+  },
+  button_exit: {
+    width: 220,
+    backgroundColor: '#9e9e9e',
+    height: 'auto',
+    borderRadius: 50,
+    alignItems: 'center',
+    padding: 10,
+    top: 60,
+  },
+  button_cont: {
+    textTransform: 'uppercase',
+    fontSize: 20,
+    color: '#fff',
+  }
+
 });
 

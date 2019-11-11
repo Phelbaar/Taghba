@@ -1,21 +1,33 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createAppContainer} from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import Taghba from './Taghba';
-import DetailScreen from './Description';
+import Infos from './Infos';
+import RandomCocktail from './RandomCocktail';
 
 const MainNavigator = createStackNavigator(
   {
     Home: {
       screen: Taghba,
-      navigationOptions:{
-          title: 'Home'
-        }
-      },
-    Details: {screen: DetailScreen},
+      navigationOptions: {
+        title: 'Get My Random Cocktail'
+      }
+    },
+    Infos: {
+      screen: Infos,
+      navigationOptions: () => ({
+        title: `Informations`,
+      }),
+    },
+    Details: {
+      screen: RandomCocktail,
+      navigationOptions: () => ({
+        title: `Your Random Cocktail`,
+      }),
+    },
   },
-  {initialRouteName: 'Home'},
+  { initialRouteName: 'Home' },
 );
 
 const AppContainer = createAppContainer(MainNavigator);
