@@ -24,42 +24,44 @@ export default class Taghba extends React.Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const {navigate} = this.props.navigation;
 
     return (
-      <ImageBackground source={bgImage} style={{ width: '100%', height: '100%', alignItems: 'center' }}>
+      <ImageBackground
+        source={bgImage}
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{width: '100%', height: '100%', alignItems: 'center'}}>
         <Text style={styles.title}>Welcome to Get My Random Cocktail !</Text>
-        <Text style={styles.content}></Text>
+        <Text style={styles.content} />
 
-        <TouchableHighlight style={styles.button_help}
+        <TouchableHighlight
+          style={styles.button_help}
           onPress={() =>
-            Alert.alert('Click on "Random Cocktail" to get your Random Cocktail ~ !')}>
+            Alert.alert(
+              'Click on "Random Cocktail" to get your Random Cocktail ~ !',
+            )
+          }>
           <Text style={styles.button_cont}>Help</Text>
         </TouchableHighlight>
 
-
-        <TouchableHighlight style={styles.button_get}
-          onPress={() =>
-            navigate('Details')}>
+        <TouchableHighlight
+          style={styles.button_get}
+          onPress={() => navigate('Details')}>
           <Text style={styles.button_cont}>Random Cocktail</Text>
-        </TouchableHighlight >
+        </TouchableHighlight>
 
-
-        <TouchableHighlight style={styles.button_info}
-          onPress={() =>
-            navigate('Infos')}>
+        <TouchableHighlight
+          style={styles.button_info}
+          onPress={() => navigate('Infos')}>
           <Text style={styles.button_cont}>Infos</Text>
-        </TouchableHighlight >
+        </TouchableHighlight>
 
-
-        <TouchableHighlight style={styles.button_exit}
-          onPress={() =>
-            BackHandler.exitApp()}>
+        <TouchableHighlight
+          style={styles.button_exit}
+          onPress={() => BackHandler.exitApp()}>
           <Text style={styles.button_cont}>Exit</Text>
-        </TouchableHighlight >
-      </ImageBackground >
-
-
+        </TouchableHighlight>
+      </ImageBackground>
     );
   }
 }
@@ -121,7 +123,5 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 20,
     color: '#fff',
-  }
-
+  },
 });
-

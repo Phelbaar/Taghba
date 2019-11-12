@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
     ScrollView,
@@ -56,7 +58,16 @@ export default class RandomCocktail extends React.Component {
 
                         <Text style={styles.name}>{val.strDrink}</Text>
                         <Image style={styles.image} source={{ uri: val.strDrinkThumb }} />
-                        <ScrollView style={{ width: 200, height: 'auto', top: 10, }}>
+                        <ScrollView style={{ width: 200, height: 'auto', top: 10}}>
+                            <Text style={{fontWeight: 'bold'}}> Ingredients : </Text>
+                            <Text style={styles.cont}>{val.strMeasure1} {val.strIngredient1}</Text>
+                            <Text style={styles.cont}>{val.strMeasure2} {val.strIngredient2}</Text>
+                            <Text style={styles.cont}>{val.strMeasure3} {val.strIngredient3}</Text>
+                            <Text style={styles.cont}>{val.strMeasure4} {val.strIngredient4}</Text>
+                            <Text style={styles.cont}>{val.strMeasure5} {val.strIngredient5}</Text>
+                        </ScrollView>
+                        <ScrollView style={{ width: 200, height: 'auto', top: 10 }}>
+                            <Text style={{fontWeight: 'bold'}}> Recipie : </Text>
                             <Text style={styles.cont}>{val.strInstructions}</Text>
                         </ScrollView>
 

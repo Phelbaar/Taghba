@@ -11,19 +11,19 @@ const MainNavigator = createStackNavigator(
     Home: {
       screen: Taghba,
       navigationOptions: {
-        title: 'Get My Random Cocktail'
-      }
+        title: 'Get My Random Cocktail',
+      },
     },
     Infos: {
       screen: Infos,
       navigationOptions: () => ({
-        title: `Informations`,
+        title: 'Informations',
       }),
     },
     Details: {
       screen: RandomCocktail,
       navigationOptions: () => ({
-        title: `Your Random Cocktail`,
+        title: 'Your Random Cocktail',
       }),
     },
   },
