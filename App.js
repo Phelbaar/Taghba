@@ -23,6 +23,7 @@ const MainNavigator = createStackNavigator(
     Details: {
       screen: RandomCocktail,
       navigationOptions: () => ({
+        //header: null,
         title: 'Your Random Cocktail',
       }),
     },

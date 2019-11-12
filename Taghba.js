@@ -38,7 +38,7 @@ export default class Taghba extends React.Component {
           style={styles.button_help}
           onPress={() =>
             Alert.alert(
-              'Click on "Random Cocktail" to get your Random Cocktail ~ !',
+              'Click on "Random Cocktail" to get your Random Cocktail !',
             )
           }>
           <Text style={styles.button_cont}>Help</Text>
